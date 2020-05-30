@@ -146,7 +146,8 @@ int main(int argc, char **argv) {
                               
                               INFINITY, INFINITY //ruote 43-44
                               }; */
-double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
+/*int cocacola() {
+  double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
                               0.07, -0.60, -3.16, 2.29, -2.07, 0.00, 1.85, //braccio 3-9
                               
@@ -169,6 +170,40 @@ double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
     wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
     wb_motor_set_position(robot_parts[i], target_pos[i]);
   }
+  int part = 9; 
+  return part;
+}*/
+
+int manoApert() {
+
+  double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
+
+                              0.07, -0.60, -3.16, 2.29, -2.07, 0.00, 1.85, //braccio 3-9
+                              
+                              0.00,  0.00, 0.79,  0.00,  0.00, //pollice 10-14
+                              
+                              0.52, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00, //indice 15-21
+                              
+                              0.00, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00, //medio 22-28
+                              
+                              -0.20, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00, //anulare 29-35
+                              
+                              -0.52, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00, //mignolo 36-42
+                              
+                              INFINITY, INFINITY //ruote 43-44
+                              }; 
+
+  // configures and achieves the robot's position desired
+  for (int i = 0; i < N_PARTS; i++) {
+    robot_parts[i] = wb_robot_get_device(names[i]);
+    wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
+    wb_motor_set_position(robot_parts[i], target_pos[i]);
+  }
+  int part = 9; 
+  return part;
+
+}
+
 
   // print user instructions
   printf("AeQQQQYou can drive this robot by selecting the 3D window and pressing the keyboard arrows.\n");
@@ -180,10 +215,13 @@ double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
   while (wb_robot_step(time_step) != -1) {
     check_keyboard();
-
+    
+    //int part = cocacola();
+    int part2 = manoApert();
     // Hello mouvement
     const double time = wb_robot_get_time() - initialTime;
-    wb_motor_set_position(robot_parts[9], 0.3 * sin(5.0 * time) - 0.3);
+    //wb_motor_set_position(robot_parts[part], 0.3 * sin(5.0 * time) - 0.3);
+    wb_motor_set_position(robot_parts[part2], 0.3 * sin(5.0 * time) - 0.3);
   };
 
   wb_robot_cleanup();
