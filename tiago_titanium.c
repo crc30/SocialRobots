@@ -148,17 +148,17 @@ int main(int argc, char **argv) {
                               }; */
 double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
-                              0.07, 0.26, -3.16, 0.00, -2.07, 0.00, 0.00, //braccio 3-9
+                              0.07, -0.60, -3.16, 2.29, -2.07, 0.00, 1.85, //braccio 3-9
                               
                               1.55,  0.40, 0.68,  0.00,  0.00, //pollice 10-14
                               
-                              0.52, 0.79, 0.00,  0.79, 0.00, 0.60, 0.30, //indice 15-21
+                              0.52, 0.79, 0.00,  0.79, 0.00, 0.20, 0.00, //indice 15-21
                               
-                              -0.22, 0.79, 0.00,  0.79, 0.00, 0.60, 0.30, //medio 22-28
+                              -0.22, 0.79, 0.00,  0.79, 0.00, 0.20, 0.00, //medio 22-28
                               
-                              -0.32, 0.79, 0.00,  0.79, 0.00, 0.60, 0.30, //anulare 29-35
+                              -0.32, 0.79, 0.00,  0.79, 0.00, 0.20, 0.00, //anulare 29-35
                               
-                              -0.49, 0.79, 0.00,  0.79, 0.00, 0.60, 0.30, //mignolo 36-42
+                              -0.49, 0.79, 0.00,  0.79, 0.00, 0.20, 0.00, //mignolo 36-42
                               
                               INFINITY, INFINITY //ruote 43-44
                               }; 
@@ -183,7 +183,7 @@ double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
     // Hello mouvement
     const double time = wb_robot_get_time() - initialTime;
-    wb_motor_set_position(robot_parts[8], 0.3 * sin(5.0 * time) - 0.3);
+    wb_motor_set_position(robot_parts[9], 0.3 * sin(5.0 * time) - 0.3);
   };
 
   wb_robot_cleanup();
