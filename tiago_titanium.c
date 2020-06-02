@@ -174,7 +174,7 @@ int main(int argc, char **argv) {
   return part;
 }*/
 
-int manoAperta() {
+/*int manoAperta() {
 
   double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
@@ -202,7 +202,7 @@ int manoAperta() {
   int part = 9; 
   return part;
 
-}
+}*/
 /*int semiChiusa() {
 
   double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
@@ -232,25 +232,92 @@ int manoAperta() {
   return part;
 
 }*/
+void vinoGenerico(initialTime) {
+double target_pos[N_PARTS] = {0.00,  0.00, 0.09, //testa 0-2
 
+                              0.07, -0.66, -3.26, 2.29, -1.00, 0.30, 0.00, //braccio 3-9
+                              
+                              1.55,  0.79, 0.68,  0.00,  0.00, //pollice 10-14
+                              
+                              0.00, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00, //indice 15-21
+                              
+                              -0.08, 0.00, 0.00,  0.00,  0.00, 0.00, 0.00, //medio 22-28
+                              
+                              -0.22, 0.00, 0.32, 0.79, 0.42, 0.79,  0.79, //anulare 29-35
+                              
+                              -0.52, 0.00,  0.79, 0.79, 0.37, 0.79,  0.62, //mignolo 36-42
+                              
+                              INFINITY, INFINITY //ruote 43-44
+                              };
+    for (int i = 0; i < N_PARTS; i++) {
+      robot_parts[i] = wb_robot_get_device(names[i]);
+      wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
+      wb_motor_set_position(robot_parts[i], target_pos[i]);
+    }
+    const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[8], 0.3 * sin(5.0 * time) - 0.3);
+ 
+}
+
+void vinoRosso(initialTime) {
+double target_pos[N_PARTS] = {0.00,  0.00, 0.09, //testa 0-2
+
+                              1.57, -0.56, -3.20, 2.29, -1.50, 0.90, 0.00, //braccio 3-9
+                              
+                              1.55,  0.79, 0.68,  0.00,  0.00, //pollice 10-14
+                              
+                              0.52, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00, //indice 15-21
+                              
+                              -0.52, 0.00,  0.79, 0.79, 0.37, 0.79,  0.62, //medio 22-28
+                              
+                              -0.22, 0.00, 0.32, 0.79, 0.42, 0.79,  0.79, //anulare 29-35
+                              
+                              -0.52, 0.00,  0.79, 0.79, 0.37, 0.79,  0.62, //mignolo 36-42
+                              
+                              INFINITY, INFINITY //ruote 43-44
+                              };
+    for (int i = 0; i < N_PARTS; i++) {
+      robot_parts[i] = wb_robot_get_device(names[i]);
+      wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
+      wb_motor_set_position(robot_parts[i], target_pos[i]);
+    }
+    const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[9], 0.3 * sin(5.0 * time) - 0.3);
+
+}
   // print user instructions
   printf("AeQQQQYou can drive this robot by selecting the 3D window and pressing the keyboard arrows.\n");
 
   // enable keyboard
   wb_keyboard_enable(time_step);
-
+int x=0;
   const double initialTime = wb_robot_get_time();
-
-  while (wb_robot_step(time_step) != -1) {
+     while (wb_robot_step(time_step) != -1) {
     check_keyboard();
-    
+    //printf("%d \n", wb_robot_step(time_step));
     //int part = cocacola();
-    int part2 = manoAperta();
+    //int part2 = manoAperta();
     //int part3 = semiChiusa();
+      //int part4 = vinoGenerico();
+      //int part5 = vinoRosso();
     // Hello mouvement
-    const double time = wb_robot_get_time() - initialTime;
+    
+    //for(int i=0; i<1000;i++){
     //wb_motor_set_position(robot_parts[part], 0.3 * sin(5.0 * time) - 0.3);
-    wb_motor_set_position(robot_parts[part2], 0.3 * sin(5.0 * time) - 0.3);
+    if (x < 100) {
+    vinoGenerico(initialTime);
+    //wb_motor_set_position(robot_parts[part4], 0.3 * sin(5.0 * time) - 0.3);
+    //wb_motor_set_position(robot_parts[i], 0.3 * sin(5.0 * time) - 0.3);
+   // }
+   x = x+1;
+   }
+   
+    if (x >= 100) {
+    vinoRosso(initialTime);
+     //wb_motor_set_position(robot_parts[part5], 0.3 * sin(5.0 * time) - 0.3);
+    x = x -1;}
+    
+    //if (x == 100) x = 0;
   };
 
   wb_robot_cleanup();
