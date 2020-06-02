@@ -149,7 +149,7 @@ int main(int argc, char **argv) {
 /*int cocacola() {
   double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
-                              0.07, -0.60, -3.16, 2.29, -2.07, 0.00, 1.85, //braccio 3-9
+                              0.07, -0.60, -3.16, 2.29, -2.07, -1.39, 1.85, //braccio 3-9
                               
                               1.55,  0.40, 0.68,  0.00,  0.00, //pollice 10-14
                               
@@ -174,7 +174,7 @@ int main(int argc, char **argv) {
   return part;
 }*/
 
-/*int manoAperta() {
+int manoAperta() {
 
   double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
@@ -202,8 +202,8 @@ int main(int argc, char **argv) {
   int part = 9; 
   return part;
 
-}*/
-int semiChiusa() {
+}
+/*int semiChiusa() {
 
   double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
@@ -231,7 +231,7 @@ int semiChiusa() {
   int part = 9; 
   return part;
 
-}
+}*/
 
   // print user instructions
   printf("AeQQQQYou can drive this robot by selecting the 3D window and pressing the keyboard arrows.\n");
@@ -245,12 +245,12 @@ int semiChiusa() {
     check_keyboard();
     
     //int part = cocacola();
-    //int part2 = manoAperta();
-    int part3 = semiChiusa();
+    int part2 = manoAperta();
+    //int part3 = semiChiusa();
     // Hello mouvement
     const double time = wb_robot_get_time() - initialTime;
     //wb_motor_set_position(robot_parts[part], 0.3 * sin(5.0 * time) - 0.3);
-    wb_motor_set_position(robot_parts[part3], 0.3 * sin(5.0 * time) - 0.3);
+    wb_motor_set_position(robot_parts[part2], 0.3 * sin(5.0 * time) - 0.3);
   };
 
   wb_robot_cleanup();
