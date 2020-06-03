@@ -125,28 +125,204 @@ int main(int argc, char **argv) {
                                 "wheel_right_joint" //44
                                };
 
-  /*double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, 0.07, 0.26, -3.16, 1.27, 1.32,     0.00,    1.41, 1.55,  0.79,
-                                0.68,  0.00,  0.00, 0.00, 0.00, 0.00,  0.00, 0.00,     0.00,    0.00, -0.08, 0.00,
-                                0.00,  0.00,  0.00, 0.00, 0.00, -0.22, 0.00, 0.32,     0.79,    0.42, 0.79,  0.79,
-                                -0.52, 0.00,  0.79, 0.79, 0.37, 0.79,  0.62, INFINITY, INFINITY};*/
-                                
-/*double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
-                              0.07, 0.26, -3.16, 1.27, 1.32, 0.00, 1.41, //braccio 3-9
+void bistecca(initialTime) {
+double target_pos[N_PARTS] = {0.00,  0.00, 0.00, //testa 0-2
+
+                              0.07, -0.30, -3.46, 1.90, 1.40, -1.39, -2.07, //braccio 3-9
                               
                               1.55,  0.79, 0.68,  0.00,  0.00, //pollice 10-14
                               
-                              0.00, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00, //indice 15-21
+                              0.00, 0.00, 0.00,  0.00, 0.79, 0.00, 0.79, //indice 15-21
                               
-                              -0.08, 0.00, 0.00,  0.00,  0.00, 0.00, 0.00, //medio 22-28
+                              -0.08, 0.00, 0.00,  0.00,  0.79, 0.00, 0.79, //medio 22-28
                               
                               -0.22, 0.00, 0.32, 0.79, 0.42, 0.79,  0.79, //anulare 29-35
                               
                               -0.52, 0.00,  0.79, 0.79, 0.37, 0.79,  0.62, //mignolo 36-42
                               
                               INFINITY, INFINITY //ruote 43-44
-                              }; */
-/*int cocacola() {
+                              };
+    for (int i = 0; i < N_PARTS; i++) {
+      robot_parts[i] = wb_robot_get_device(names[i]);
+      wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
+      wb_motor_set_position(robot_parts[i], target_pos[i]);
+    }
+    /*const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[9], 0.3 * sin(5.0 * time) - 0.3);*/
+   initialTime=0;
+
+}
+//------------------------------------------------------------------
+void bistecca2(initialTime) {
+double target_pos[N_PARTS] = {0.00,  0.00, 0.00, //testa 0-2
+
+                              0.07, -0.30, -1.90, 1.90, 1.32, -1.39, 1.77, //braccio 3-9
+                              
+                              1.55,  0.79, 0.79,  0.00,  0.00, //pollice 10-14
+                              
+                              0.40, 0.00, 0.79,  0.00, 0.00, 0.00, 0.00, //indice 15-21
+                              
+                              -0.08, 0.00, 0.79,  0.00,  0.00, 0.00, 0.00, //medio 22-28
+                              
+                              -0.22, 0.00, 0.79, 0.00, 0.00, 0.00,  0.00, //anulare 29-35
+                              
+                              -0.52, 0.00,  0.79, 0.00, 0.0, 0.00,  0.00, //mignolo 36-42
+                              
+                              INFINITY, INFINITY //ruote 43-44
+                              };
+    for (int i = 0; i < N_PARTS; i++) {
+      robot_parts[i] = wb_robot_get_device(names[i]);
+      wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
+      wb_motor_set_position(robot_parts[i], target_pos[i]);
+    }
+    /*const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[9], 0.3 * sin(5.0 * time) - 0.3);*/
+   initialTime=0;
+
+}
+//------------------------------------------------------------------
+void bistecca3(initialTime) {
+double target_pos[N_PARTS] = {0.00,  0.00, 0.00, //testa 0-2
+
+                              0.07, -0.30, -1.90, 1.90, 1.32, -1.39, 1.77, //braccio 3-9
+                              
+                              1.55,  0.00, 0.79,  0.00,  0.00, //pollice 10-14
+                              
+                              0.40, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00, //indice 15-21
+                              
+                              -0.08, 0.00, 0.00,  0.00,  0.00, 0.00, 0.00, //medio 22-28
+                              
+                              -0.22, 0.00, 0.00, 0.00, 0.00, 0.00,  0.00, //anulare 29-35
+                              
+                              -0.52, 0.00,  0.00, 0.00, 0.0, 0.00,  0.00, //mignolo 36-42
+                              
+                              INFINITY, INFINITY //ruote 43-44
+                              };
+    for (int i = 0; i < N_PARTS; i++) {
+      robot_parts[i] = wb_robot_get_device(names[i]);
+      wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
+      wb_motor_set_position(robot_parts[i], target_pos[i]);
+    }
+    const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[4], 0.3 * sin(5.0 * time) - 0.3);
+   //initialTime=0;
+
+}
+//------------------------------------------------------------------
+void bistecca4(initialTime) {
+double target_pos[N_PARTS] = {0.00,  0.00, 0.00, //testa 0-2
+
+                              0.07, 0.00, -1.90, 1.90, 1.32, -1.39, -1.67, //braccio 3-9
+                              
+                              0.00,  0.00, 0.79,  0.00,  0.00, //pollice 10-14
+                              
+                              0.40, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00, //indice 15-21
+                              
+                              -0.08, 0.00, 0.00,  0.00,  0.00, 0.00, 0.00, //medio 22-28
+                              
+                              -0.22, 0.00, 0.00, 0.00, 0.00, 0.00,  0.00, //anulare 29-35
+                              
+                              -0.52, 0.00,  0.00, 0.00, 0.0, 0.00,  0.00, //mignolo 36-42
+                              
+                              INFINITY, INFINITY //ruote 43-44
+                              };
+    for (int i = 0; i < N_PARTS; i++) {
+      robot_parts[i] = wb_robot_get_device(names[i]);
+      wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
+      wb_motor_set_position(robot_parts[i], target_pos[i]);
+    }
+    const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[4], 0.3 * sin(5.0 * time) - 0.3);
+   initialTime=0;
+
+}
+//------------------------------------------------------------------
+void cotoletta(initialTime) {
+double target_pos[N_PARTS] = {0.00,  0.00, 0.00, //testa 0-2
+
+                              0.07, -0.30, -3.46, 1.90, 1.40, -1.39, -2.07, //braccio 3-9
+                              
+                              1.55,  0.79, 0.68,  0.00,  0.00, //pollice 10-14
+                              
+                              0.00, 0.00, 0.00,  0.00, 0.79, 0.00, 0.79, //indice 15-21
+                              
+                              -0.08, 0.00, 0.00,  0.00,  0.79, 0.00, 0.79, //medio 22-28
+                              
+                              -0.22, 0.00, 0.32, 0.79, 0.42, 0.79,  0.79, //anulare 29-35
+                              
+                              -0.52, 0.00,  0.79, 0.79, 0.37, 0.79,  0.62, //mignolo 36-42
+                              
+                              INFINITY, INFINITY //ruote 43-44
+                              };
+    for (int i = 0; i < N_PARTS; i++) {
+      robot_parts[i] = wb_robot_get_device(names[i]);
+      wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
+      wb_motor_set_position(robot_parts[i], target_pos[i]);
+    }
+    const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[4], 0.3 * sin(5.0 * time) - 0.3);
+   initialTime=0;
+
+}
+//------------------------------------------------------------------
+void cotoletta2(initialTime) {
+double target_pos[N_PARTS] = {0.00,  0.00, 0.00, //testa 0-2
+
+                              0.07, -0.30, -1.90, 1.90, 1.32, -1.39, 1.77, //braccio 3-9
+                              
+                              1.55,  0.00, 0.79,  0.00,  0.00, //pollice 10-14
+                              
+                              0.40, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00, //indice 15-21
+                              
+                              -0.08, 0.00, 0.00,  0.00,  0.00, 0.00, 0.00, //medio 22-28
+                              
+                              -0.22, 0.00, 0.00, 0.00, 0.00, 0.00,  0.00, //anulare 29-35
+                              
+                              -0.52, 0.00,  0.00, 0.00, 0.0, 0.00,  0.00, //mignolo 36-42
+                              
+                              INFINITY, INFINITY //ruote 43-44
+                              };
+    for (int i = 0; i < N_PARTS; i++) {
+      robot_parts[i] = wb_robot_get_device(names[i]);
+      wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
+      wb_motor_set_position(robot_parts[i], target_pos[i]);
+    }
+    /*const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[4], 0.3 * sin(5.0 * time) - 0.3);*/
+   initialTime=0;
+
+}
+//------------------------------------------------------------------
+void cotoletta3(initialTime) {
+double target_pos[N_PARTS] = {0.00,  0.00, 0.00, //testa 0-2
+
+                              0.07, 0.00, -1.90, 1.90, 1.32, -1.39, -1.67, //braccio 3-9
+                              
+                              0.00,  0.00, 0.79,  0.00,  0.00, //pollice 10-14
+                              
+                              0.40, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00, //indice 15-21
+                              
+                              -0.08, 0.00, 0.00,  0.00,  0.00, 0.00, 0.00, //medio 22-28
+                              
+                              -0.22, 0.00, 0.00, 0.00, 0.00, 0.00,  0.00, //anulare 29-35
+                              
+                              -0.52, 0.00,  0.00, 0.00, 0.0, 0.00,  0.00, //mignolo 36-42
+                              
+                              INFINITY, INFINITY //ruote 43-44
+                              };
+    for (int i = 0; i < N_PARTS; i++) {
+      robot_parts[i] = wb_robot_get_device(names[i]);
+      wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
+      wb_motor_set_position(robot_parts[i], target_pos[i]);
+    }
+    /*const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[4], 0.3 * sin(5.0 * time) - 0.3);*/
+   initialTime=0;
+
+}
+//------------------------------------------------------------------
+void cocacola(initialTime) {
   double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
                               0.07, -0.60, -3.16, 2.29, -2.07, -1.39, 1.85, //braccio 3-9
@@ -170,11 +346,12 @@ int main(int argc, char **argv) {
     wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
     wb_motor_set_position(robot_parts[i], target_pos[i]);
   }
-  int part = 9; 
-  return part;
-}*/
-
-/*int manoAperta() {
+  const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[9], 0.3 * sin(5.0 * time) - 0.3);
+   initialTime=0;
+}
+//------------------------------------------------------------------
+void manoAperta(initialTime) {
 
   double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
@@ -199,11 +376,13 @@ int main(int argc, char **argv) {
     wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
     wb_motor_set_position(robot_parts[i], target_pos[i]);
   }
-  int part = 9; 
-  return part;
+  const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[9], 0.3 * sin(5.0 * time) - 0.3);
+   initialTime=0;
 
-}*/
-/*int semiChiusa() {
+}
+//------------------------------------------------------------------
+void semiChiusa(initialTime) {
 
   double target_pos[N_PARTS] = {0.24,  -0.67, 0.09, //testa 0-2
 
@@ -228,10 +407,12 @@ int main(int argc, char **argv) {
     wb_motor_set_velocity(robot_parts[i], wb_motor_get_max_velocity(robot_parts[i]) / 2.0);
     wb_motor_set_position(robot_parts[i], target_pos[i]);
   }
-  int part = 9; 
-  return part;
+  const double time = wb_robot_get_time() - initialTime;
+    wb_motor_set_position(robot_parts[9], 0.3 * sin(5.0 * time) - 0.3);
+   initialTime=0;
 
-}*/
+}
+//------------------------------------------------------------------
 void vinoGenerico(initialTime) {
 double target_pos[N_PARTS] = {0.00,  0.00, 0.09, //testa 0-2
 
@@ -258,7 +439,7 @@ double target_pos[N_PARTS] = {0.00,  0.00, 0.09, //testa 0-2
     wb_motor_set_position(robot_parts[8], 0.3 * sin(5.0 * time) - 0.3);
  
 }
-
+//------------------------------------------------------------------
 void vinoRosso(initialTime) {
 double target_pos[N_PARTS] = {0.00,  0.00, 0.09, //testa 0-2
 
@@ -286,6 +467,7 @@ double target_pos[N_PARTS] = {0.00,  0.00, 0.09, //testa 0-2
    
 
 }
+//------------------------------------------------------------------
 void vinoRosso2(initialTime) {
 double target_pos[N_PARTS] = {0.00,  0.00, 0.09, //testa 0-2
 
@@ -314,6 +496,7 @@ double target_pos[N_PARTS] = {0.00,  0.00, 0.09, //testa 0-2
     wb_motor_set_position(robot_parts[6], 10.3 * sin(5.0 * time) - 0.1);*/
 
 }
+//------------------------------------------------------------------
 void vinoBianco(initialTime) {
 double target_pos[N_PARTS] = {0.00,  0.00, 0.09, //testa 0-2
 
@@ -342,46 +525,58 @@ double target_pos[N_PARTS] = {0.00,  0.00, 0.09, //testa 0-2
     wb_motor_set_position(robot_parts[6], 10.3 * sin(5.0 * time) - 0.1);*/
 
 }
+
   // print user instructions
   printf("AeQQQQYou can drive this robot by selecting the 3D window and pressing the keyboard arrows.\n");
 
   // enable keyboard
   wb_keyboard_enable(time_step);
-int x=0;
+  int x=0;
   const double initialTime = wb_robot_get_time();
-     while (wb_robot_step(time_step) != -1) {
+  while (wb_robot_step(time_step) != -1) {
     check_keyboard();
-    //printf("%d \n", wb_robot_step(32));
-    //int part = cocacola();
-    //int part2 = manoAperta();
-    //int part3 = semiChiusa();
-      //int part4 = vinoGenerico();
-      //int part5 = vinoRosso();
-    // Hello mouvement
-    
-    //for(int i=0; i<1000;i++){
-    //wb_motor_set_position(robot_parts[part], 0.3 * sin(5.0 * time) - 0.3);
-    if (x < 100) {
-    vinoGenerico(initialTime);
-    //wb_motor_set_position(robot_parts[part4], 0.3 * sin(5.0 * time) - 0.3);
-    //wb_motor_set_position(robot_parts[i], 0.3 * sin(5.0 * time) - 0.3);
-   // }
-   x = x+1;
-   }
+    /*****
+    *FUNZIONI
+    *cocacola(initialTime)
+    *manoAperta(initialTime)
+    *semiChiusa(initialTime)
+    *vinoGenerico(initialTime)
+    *vinoRosso(initialTime)
+    *vinoRosso2(initialTime)
+    *vinoBianco(initialTime)
+    *bistecca(initialTime);
+    *bistecca2(initialTime);
+    *bistecca3(initialTime);
+    *bistecca4(initialTime);
+    *cotoletta(initialTime);
+    *cotoletta2initialTime);
+    *cotoletta3(initialTime);
+    *
+    *
+    */
+
+    if (x < 300) {
+      //bistecca(initialTime);
+      cotoletta(initialTime);
+      x = x + 1;
+    }
    
-    if (x >= 100) {
-    //vinoRosso(initialTime);
-    //vinoRosso2(initialTime);
-    vinoBianco(initialTime); //dopo vino bianco ritorna a posto
+    if (x >= 300) {
+      //bistecca2(initialTime);
+      cotoletta2(initialTime);
+      x = x + 1;
+    }
+    if (x >= 600) {
+      //bistecca3(initialTime);
+      cotoletta3(initialTime);
+      x = x + 1;
+    }
+    if (x >= 800) {
+      //bistecca4(initialTime);
+      x = x + 1;
+    }
     
-     //wb_motor_set_position(robot_parts[part5], 0.3 * sin(5.0 * time) - 0.3);
-    x = x -1;}
-    
-    //if (x == 100) x = 0;
   };
-
-
-
 
   wb_robot_cleanup();
   return 0;
