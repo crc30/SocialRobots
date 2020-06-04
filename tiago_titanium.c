@@ -34,10 +34,9 @@
 static WbDeviceTag robot_parts[N_PARTS];
 
   //POSIZIONI BRACCIO
-  double arm_target[7] = {0.37, -0.20, -0.50, 1.50};//, 0.50, 0.00, 0.00};
-  double arm_fuck[7] = {1.20, 0.26, -3.16, 1.27};//, -1.70, 0.00, 0.30};
-  double arm_90_up[7] = {1.20, 0.26, -3.16, 1.27};//, 1.70, 0.00, 1.41};
-  double arm_90_down[7] = {1.20, -0.50, -3.16, 2.00};//, 1.70, -0.90, 1.41};
+  double arm_target[7] = {0.37, -0.20, -0.50, 1.50};
+  double arm_90_up[7] = {1.20, 0.26, -3.16, 1.27};
+  double arm_90_down[7] = {1.20, -0.50, -3.16, 2.00};
   double arm_90_down2[7] = {1.40, -0.50, -3.16, 1.80};
   double arm_90_down3[7] = {1.20, -0.50, -3.16, 1.60};
   double arm_90_down4[7] = {1.00, -0.50, -3.16, 1.80};
@@ -46,9 +45,10 @@ static WbDeviceTag robot_parts[N_PARTS];
   double arm_90_mouth2[7] = {1.10, -0.90, -2.76, 2.29};
   double arm_90_mouth3[7] = {1.20, -1.00, -2.76, 2.29};
   double arm_90_mouth4[7] = {1.30, -0.90, -2.76, 2.29};
+  double arm_90_mouth5[7] = {1.20, -0.80, -2.76, 1.60};
+  
   double arm_90_45[7] = {0.10, 0.50, -2.16, 2.10};
   double arm_90_45_2[7] = {0.10, 0.50, -2.16, 2.25};
-  
   double arm_90_45_3[7] = {0.30, 0.30, -1.90, 2.25};
   double arm_90_45_31[7] = {0.40, 0.30, -1.90, 2.25};
   double arm_90_45_32[7] = {0.50, 0.30, -1.90, 2.25};
@@ -57,6 +57,9 @@ static WbDeviceTag robot_parts[N_PARTS];
   double arm_90_45_r[7] = {0.30, 0.50, -2.16, 1.90};
   double arm_90_45_r1[7] = {0.10, 0.50, -2.16, 1.80};
   double arm_90_45_r2[7] = {0.10, 0.50, -2.16, 1.90};
+  
+  double arm_face[7] = {0.00, -0.50, -2.90, 2.29};
+  double arm_face2[7] = {0.30, -0.40, -2.90, 2.29};
   
   //POSIZIONI PALMO
   double palm_front[3] = {-1.70, 0.00, 0.00};
@@ -70,6 +73,9 @@ static WbDeviceTag robot_parts[N_PARTS];
   double palm_up3[3] = {-1.80, -1.00, 0.00};
   double palm_up3_1[3] = {-1.30, -1.00, 0.00};
   double palm_down[3] = {1.50, 1.39, 2.00};//TO TEST 
+  double palm_45[3] = {-1.80, 0.40, 0.70};
+  double palm_45_2[3] = {-1.80, 0.40, 0.00};
+  double palm_45_3[3] = {-2.20, 0.60, 0.00};
                               
   //POSIZIONI DITA
                                 
@@ -293,11 +299,37 @@ static void amatriciana(char *names[], int time_step){
     setTiagoPositionCompos(names, time_step, 0.50, arm_90_mouth, palm_front, thumb_open, index_open, middle_open, ring_open, little_open);
     setTiagoPositionCompos(names, time_step, 2.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
 }
+
 /*static void fuck(char *names[], int time_step){
-    setTiagoPositionCompos(names, time_step, 0.00, arm_fuck, palm_front, thumb_closed, index_closed, middle_open, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 0.00, arm_90_up, palm_front, thumb_closed, index_closed, middle_open, ring_closed, little_closed);
     //setTiagoPositionCompos(names, time_step, 4.00, arm_90_down, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
     setTiagoPositionCompos(names, time_step, 5.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
-} */   
+} */ 
+  
+void wine(char *names[], int time_step ) {
+    setTiagoPositionCompos(names, time_step, 0.00, arm_face, palm_45, thumb_closed, index_open, middle_open, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 2.00, arm_face2, palm_45, thumb_closed, index_open, middle_open, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 0.30, arm_face, palm_45, thumb_closed, index_open, middle_open, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 0.30, arm_face2, palm_45, thumb_closed, index_open, middle_open, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 0.30, arm_face, palm_45, thumb_closed, index_open, middle_open, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 0.30, arm_face2, palm_45, thumb_closed, index_open, middle_open, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 0.30, arm_face, palm_45, thumb_closed, index_open, middle_open, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 2.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed); 
+}
+
+void white_wine(char *names[], int time_step ) {
+    wine(names, time_step);
+    setTiagoPositionCompos(names, time_step, 0.00, arm_face, palm_45_2, thumb_closed, index_open, middle_closed, ring_open, little_open);
+    setTiagoPositionCompos(names, time_step, 1.00, arm_face, palm_45_2, thumb_closed, index_open, middle_open, ring_open, little_open);
+    setTiagoPositionCompos(names, time_step, 1.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed); 
+}
+
+void red_wine(char *names[], int time_step ) {
+    wine(names, time_step);
+    setTiagoPositionCompos(names, time_step, 0.00, arm_90_mouth2, palm_45_3, thumb_closed, index_open, middle_closed, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 2.00, arm_90_mouth5, palm_45_3, thumb_closed, index_semi_closed, middle_closed, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 1.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed); 
+}
 
 int main(int argc, char **argv) {
   wb_robot_init();
@@ -392,10 +424,10 @@ int main(int argc, char **argv) {
               beer(names,time_step);      
             break;
           case 'R':
-              //red_wine(names, time_step);
+              red_wine(names, time_step);
             break;
           case 'V':
-              //white_wine(names, time_step);
+              white_wine(names, time_step);
             break;
           case 'C':
               coffee(names, time_step);
