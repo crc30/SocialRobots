@@ -41,6 +41,7 @@ static WbDeviceTag robot_parts[N_PARTS];
   double arm_90_down3[7] = {1.20, -0.50, -3.16, 1.60};
   double arm_90_down4[7] = {1.00, -0.50, -3.16, 1.80};
   
+<<<<<<< Updated upstream
   double arm_90_mouth[7] = {1.20, -0.80, -2.76, 2.29};
   double arm_90_mouth2[7] = {1.10, -0.90, -2.76, 2.29};
   double arm_90_mouth3[7] = {1.20, -1.00, -2.76, 2.29};
@@ -61,6 +62,19 @@ static WbDeviceTag robot_parts[N_PARTS];
   double arm_face[7] = {0.00, -0.50, -2.90, 2.29};
   double arm_face2[7] = {0.30, -0.40, -2.90, 2.29};
   
+=======
+  double arm_90_45_r3[4] = {0.07, 0.20, -1.90, 2.25}; //CC
+  double arm_90_45_r4[4] = {0.07, 0.00, -1.90, 2.25}; //CC
+  
+  double arm_90_45_down[4] = {0.50, -0.50, -2.16, 2.10}; //NEW FEDE
+  double arm_90_45_down2[4] = {0.10, -0.50, -2.16, 2.10}; //NEW FEDE
+
+  double arm_face[4] = {0.00, -0.50, -2.90, 2.29};
+  double arm_face2[4] = {0.30, -0.40, -2.90, 2.29};
+  
+  double arm_start_com_1[4] = {0.07, 1.02, 0.00, -0.32};
+
+>>>>>>> Stashed changes
   //POSIZIONI PALMO
   double palm_front[3] = {-1.70, 0.00, 0.00};
   double palm_rear[3] = {-2.00, 0.00, -1.00}; 
@@ -202,11 +216,19 @@ static void rotate_and_move(int time_step, int part, int partm, double move_valu
         }
         
       }
-    }
+    } 
 
 }
 
 //GESTO TEST
+
+static void start_comunication(char *names[], int time_step){
+    setTiagoPositionCompos(names, time_step, 0.00, arm_start_com_1, palm_dx, thumb_open, index_open, middle_open, ring_open, little_open);
+    rotate(time_step, 4, 5.00, 1.00);
+    setTiagoPositionCompos(names, time_step, 1.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
+}
+
+
 static void beer(char *names[], int time_step){
     setTiagoPositionCompos(names, time_step, 0.00, arm_90_up, palm_sx, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
     setTiagoPositionCompos(names, time_step, 4.00, arm_90_down, palm_sx, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
@@ -300,12 +322,15 @@ static void amatriciana(char *names[], int time_step){
     setTiagoPositionCompos(names, time_step, 2.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
 }
 
+<<<<<<< Updated upstream
 /*static void fuck(char *names[], int time_step){
     setTiagoPositionCompos(names, time_step, 0.00, arm_90_up, palm_front, thumb_closed, index_closed, middle_open, ring_closed, little_closed);
     //setTiagoPositionCompos(names, time_step, 4.00, arm_90_down, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
     setTiagoPositionCompos(names, time_step, 5.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
 } */ 
   
+=======
+>>>>>>> Stashed changes
 void wine(char *names[], int time_step ) {
     setTiagoPositionCompos(names, time_step, 0.00, arm_face, palm_45, thumb_closed, index_open, middle_open, ring_closed, little_closed);
     setTiagoPositionCompos(names, time_step, 2.00, arm_face2, palm_45, thumb_closed, index_open, middle_open, ring_closed, little_closed);
@@ -328,7 +353,37 @@ void red_wine(char *names[], int time_step ) {
     wine(names, time_step);
     setTiagoPositionCompos(names, time_step, 0.00, arm_90_mouth2, palm_45_3, thumb_closed, index_open, middle_closed, ring_closed, little_closed);
     setTiagoPositionCompos(names, time_step, 2.00, arm_90_mouth5, palm_45_3, thumb_closed, index_semi_closed, middle_closed, ring_closed, little_closed);
+<<<<<<< Updated upstream
     setTiagoPositionCompos(names, time_step, 1.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed); 
+=======
+    setTiagoPositionCompos(names, time_step, 1.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
+}
+
+void beef_steak(char *names[], int time_step) {
+    setTiagoPositionCompos(names, time_step, 0.00, arm_face2, palm_45, thumb_closed, index_semi_closed, middle_semi_closed, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 2.50, arm_face, palm_45, thumb_closed, index_semi_closed, middle_semi_closed, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 1.00, arm_90_45_down, palm_down2, thumb_semi_closed_centred, index_open_s, middle_open_s, ring_open_s, little_open_s);
+    setTiagoPositionCompos(names, time_step, 3.00, arm_90_45_down2, palm_down2, thumb_semi_closed_centred, index_open_s, middle_open_s, ring_open_s, little_open_s);
+    setTiagoPositionCompos(names, time_step, 1.50, arm_90_45_r3, palm_sx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
+    setTiagoPositionCompos(names, time_step, 3.00, arm_90_45_r4, palm_dx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
+    setTiagoPositionCompos(names, time_step, 1.00, arm_90_45_r3, palm_dx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
+    setTiagoPositionCompos(names, time_step, 4.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
+    
+}
+
+void cotoletta(char *names[], int time_step) {
+    setTiagoPositionCompos(names, time_step, 0.00, arm_face, palm_45, thumb_closed, index_semi_closed, middle_semi_closed, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 2.50, arm_face, palm_45_4, thumb_closed, index_semi_closed, middle_semi_closed, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 0.50, arm_face, palm_45, thumb_closed, index_semi_closed, middle_semi_closed, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 0.50, arm_face, palm_45_4, thumb_closed, index_semi_closed, middle_semi_closed, ring_closed, little_closed);
+    setTiagoPositionCompos(names, time_step, 1.50, arm_90_45_r3, palm_sx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
+    setTiagoPositionCompos(names, time_step, 4.00, arm_90_45_r4, palm_dx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
+    setTiagoPositionCompos(names, time_step, 1.00, arm_90_45_r3, palm_dx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
+    setTiagoPositionCompos(names, time_step, 3.00, arm_90_45_r4, palm_sx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
+    setTiagoPositionCompos(names, time_step, 1.00, arm_90_45_r3, palm_sx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
+    setTiagoPositionCompos(names, time_step, 4.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
+    
+>>>>>>> Stashed changes
 }
 
 int main(int argc, char **argv) {
@@ -442,17 +497,29 @@ int main(int argc, char **argv) {
               amatriciana(names, time_step);
             break;
           case 'M':
-              //cotoletta(names, time_step);
+              cotoletta(names, time_step);
             break;
+<<<<<<< Updated upstream
           case 'S': 
               //beef_steak(names,time_step);      
+=======
+          case 'S':
+              beef_steak(names,time_step);
+>>>>>>> Stashed changes
             break;
           case 'U':
               fruit(names, time_step);
             break;
           case 'I':
               ice_cream(names, time_step);
+<<<<<<< Updated upstream
             break;     
+=======
+            break;
+          case 'Q':
+              start_comunication(names, time_step);
+            break;
+>>>>>>> Stashed changes
         }
       }
   }
