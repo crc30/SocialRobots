@@ -15,7 +15,7 @@
  */
 
 /*
- * Description: .
+ * Description: . 
  */
 
 #include <math.h>
@@ -57,16 +57,16 @@ static WbDeviceTag robot_parts[N_PARTS];
   //double arm_90_45_r[4] = {0.30, 0.50, -2.16, 1.90}; unused
   //double arm_90_45_r1[4] = {0.10, 0.50, -2.16, 1.80}; unused
   //double arm_90_45_r2[4] = {0.10, 0.50, -2.16, 1.90}; unused
-  
+
   double arm_90_45_r3[4] = {0.07, 0.20, -1.90, 2.25}; //CC
   double arm_90_45_r4[4] = {0.07, 0.00, -1.90, 2.25}; //CC
-  
+
   double arm_90_45_down[4] = {0.50, -0.50, -2.16, 2.10}; //NEW FEDE
   double arm_90_45_down2[4] = {0.10, -0.50, -2.16, 2.10}; //NEW FEDE
 
   double arm_face[4] = {0.07, -0.50, -2.90, 2.29};
   double arm_face2[4] = {0.30, -0.40, -2.90, 2.29};
-  
+
   double arm_start_com_1[4] = {0.07, 1.02, 0.00, -0.32};
 
   //POSIZIONI PALMO
@@ -87,7 +87,7 @@ static WbDeviceTag robot_parts[N_PARTS];
   double palm_45_4[3] = {-1.80, 0.80, 0.70}; //CC
   double palm_down2[3] = {1.32, -1.39, 1.77}; //CC
   //double palm_down3[3] = {1.32, -1.39, -1.77}; //CC unused
-  
+
 
   //POSIZIONI DITA
 
