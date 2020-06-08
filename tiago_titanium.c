@@ -54,9 +54,9 @@ static WbDeviceTag robot_parts[N_PARTS];
   double arm_90_45_32[4] = {0.50, 0.30, -1.90, 2.25};
   double arm_90_45_33[4] = {0.60, 0.30, -1.90, 2.25};
 
-  double arm_90_45_r[4] = {0.30, 0.50, -2.16, 1.90};
-  double arm_90_45_r1[4] = {0.10, 0.50, -2.16, 1.80};
-  double arm_90_45_r2[4] = {0.10, 0.50, -2.16, 1.90};
+  //double arm_90_45_r[4] = {0.30, 0.50, -2.16, 1.90}; unused
+  //double arm_90_45_r1[4] = {0.10, 0.50, -2.16, 1.80}; unused
+  //double arm_90_45_r2[4] = {0.10, 0.50, -2.16, 1.90}; unused
   
   double arm_90_45_r3[4] = {0.07, 0.20, -1.90, 2.25}; //CC
   double arm_90_45_r4[4] = {0.07, 0.00, -1.90, 2.25}; //CC
@@ -64,7 +64,7 @@ static WbDeviceTag robot_parts[N_PARTS];
   double arm_90_45_down[4] = {0.50, -0.50, -2.16, 2.10}; //NEW FEDE
   double arm_90_45_down2[4] = {0.10, -0.50, -2.16, 2.10}; //NEW FEDE
 
-  double arm_face[4] = {0.00, -0.50, -2.90, 2.29};
+  double arm_face[4] = {0.07, -0.50, -2.90, 2.29};
   double arm_face2[4] = {0.30, -0.40, -2.90, 2.29};
   
   double arm_start_com_1[4] = {0.07, 1.02, 0.00, -0.32};
@@ -80,21 +80,21 @@ static WbDeviceTag robot_parts[N_PARTS];
   double palm_up2[3] = {0.50, 1.39, -2.00};//TO TESTARE QUANDO SERVE
   double palm_up3[3] = {-1.80, -1.00, 0.00};
   double palm_up3_1[3] = {-1.30, -1.00, 0.00};
-  double palm_down[3] = {1.50, 1.39, 2.00};//TO TEST
+  //double palm_down[3] = {1.50, 1.39, 2.00};//TO TEST unused
   double palm_45[3] = {-1.80, 0.40, 0.70};
   double palm_45_2[3] = {-1.80, 0.40, 0.00};
-  double palm_45_3[3] = {-2.20, 0.60, 0.00};
+  double palm_45_3[3] = {-2.07, 0.60, 0.00};
   double palm_45_4[3] = {-1.80, 0.80, 0.70}; //CC
   double palm_down2[3] = {1.32, -1.39, 1.77}; //CC
-  double palm_down3[3] = {1.32, -1.39, -1.77}; //CC
+  //double palm_down3[3] = {1.32, -1.39, -1.77}; //CC unused
   
 
   //POSIZIONI DITA
 
   //POLLICE
   double thumb_closed[5] = {1.55, 0.79, 0.68, 0.00, 0.00};
-  double thumb_open[5] = {-0.08, 0.00, 0.00, 0.00, 0.00};
-  double thumb_semi_closed[5] = {-0.08, 0.00, 0.79, 0.00, 0.79};
+  double thumb_open[5] = {0.00, 0.00, 0.00, 0.00, 0.00};
+  double thumb_semi_closed[5] = {0.00, 0.00, 0.79, 0.00, 0.79};
   double thumb_centred[5] = {1.55,  0.40, 0.68,  0.00,  0.00};
   double thumb_semi_closed_centred[5] = {1.55,  0.79, 0.79,  0.00,  0.00}; //CC
 
@@ -104,7 +104,7 @@ static WbDeviceTag robot_parts[N_PARTS];
   double index_semi_closed[7] = {0.00, 0.00, 0.79, 0.00, 0.79, 0.00, 0.79};
   double index_centred[7] = {0.52, 0.79, 0.00,  0.79, 0.00, 0.20, 0.00};
   double index_open_s[7] = {0.52, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00};
-  double index_semi_closed_centred[7] = {0.40, 0.00, 0.79,  0.00, 0.00, 0.00, 0.00}; //CC
+  //double index_semi_closed_centred[7] = {0.40, 0.00, 0.79,  0.00, 0.00, 0.00, 0.00}; //CC unused
 
   //MEDIO
   double middle_closed[7] = {-0.08, 0.79, 0.30, 0.79, 0.40, 0.79, 0.79};
@@ -112,15 +112,15 @@ static WbDeviceTag robot_parts[N_PARTS];
   double middle_semi_closed[7] = {-0.08, 0.00, 0.79, 0.00, 0.79, 0.00, 0.79};
   double middle_centred[7] = {-0.22, 0.79, 0.00,  0.79, 0.00, 0.20, 0.00};
   double middle_open_s[7] = {0.00, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00};
-  double middle_semi_closed_centred[7] = {-0.08, 0.00, 0.79,  0.00,  0.00, 0.00, 0.00}; //CC
+  //double middle_semi_closed_centred[7] = {-0.08, 0.00, 0.79,  0.00,  0.00, 0.00, 0.00}; //CC unused
 
   //ANULARE
   double ring_closed[7] = {-0.22, 0.79, 0.32, 0.79, 0.42, 0.79, 0.79};
   double ring_open[7] = {-0.08, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
   double ring_semi_closed[7] = {-0.08, 0.00, 0.79, 0.00, 0.79, 0.00, 0.79};
-  double ring_centred[7] = {-0.32, 0.79, 0.00,  0.79, 0.00, 0.20, 0.00};
-  double ring_open_s[7] = {-0.20, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00};
-  double ring_semi_closed_centred[7] = {-0.22, 0.00, 0.79, 0.00, 0.00, 0.00,  0.00}; //CC
+  double ring_centred[7] = {-0.32, 0.79, 0.00, 0.79, 0.00, 0.20, 0.00};
+  double ring_open_s[7] = {-0.20, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
+  //double ring_semi_closed_centred[7] = {-0.22, 0.00, 0.79, 0.00, 0.00, 0.00, 0.00}; //CC unused
 
   //MIGNOLO
   double little_closed[7] = {-0.52, 0.79, 0.79, 0.79, 0.37, 0.79,  0.62};
@@ -128,7 +128,7 @@ static WbDeviceTag robot_parts[N_PARTS];
   double little_semi_closed[7] = {-0.08, 0.00, 0.79, 0.00, 0.79, 0.00, 0.79};
   double little_centred[7] = {-0.49, 0.79, 0.00,  0.79, 0.00, 0.20, 0.00};
   double little_open_s[7] = {-0.52, 0.00, 0.00,  0.00, 0.00, 0.00, 0.00};
-  double little_semi_closed_centred[7] = {-0.52, 0.00,  0.79, 0.00, 0.0, 0.00,  0.00}; //CC
+  //double little_semi_closed_centred[7] = {-0.52, 0.00,  0.79, 0.00, 0.00, 0.00,  0.00}; //CC unused
 
 static void setTiagoPositionCompos(char *my_names[], int time_step, double interval, double *arm, double *palm, double *thumb, double *index, double *middle, double *ring, double *little){  //SETTING DELLA POSIZIONE COMPOSIZIONALE
 
@@ -219,7 +219,7 @@ static void rotate_and_move(int time_step, int part, int partm, double move_valu
         }
 
       }
-    } 
+    }
 
 }
 
@@ -359,7 +359,7 @@ void beef_steak(char *names[], int time_step) {
     setTiagoPositionCompos(names, time_step, 3.00, arm_90_45_r4, palm_dx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
     setTiagoPositionCompos(names, time_step, 1.00, arm_90_45_r3, palm_dx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
     setTiagoPositionCompos(names, time_step, 4.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
-    
+
 }
 
 void cotoletta(char *names[], int time_step) {
@@ -373,7 +373,7 @@ void cotoletta(char *names[], int time_step) {
     setTiagoPositionCompos(names, time_step, 3.00, arm_90_45_r4, palm_sx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
     setTiagoPositionCompos(names, time_step, 1.00, arm_90_45_r3, palm_sx, thumb_open, index_open_s, middle_open_s, ring_open_s, little_open_s);
     setTiagoPositionCompos(names, time_step, 4.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
-    
+
 }
 
 int main(int argc, char **argv) {
@@ -441,10 +441,26 @@ int main(int argc, char **argv) {
 
 
   //POSIZIONE INIZIALE
-  setTiagoPositionCompos(names, time_step, 0.00, arm_target, palm_rear, thumb_open, index_open, middle_open, ring_open, little_open);
+  setTiagoPositionCompos(names, time_step, 0.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
 
   // print user instructions
-  printf("You can choose the sign from the menu.\n"); //POI LO SISTEMEREMO
+  printf("WELCOME FOLKS\n"); //POI LO SISTEMEREMO
+  printf("TO SHOW THE LIS PRESS\n");
+  printf("\n");
+  printf("W for still water\n");
+  printf("F for sparkling water\n");
+  printf("K for cocacola\n");
+  printf("B for beer\n");
+  printf("R for red wine\n");
+  printf("V for white wine\n");
+  printf("C for coffee\n");
+  printf("P for tomato\n");
+  printf("G for carbonara\n");
+  printf("A for amatriciana\n");
+  printf("M for cotoletta\n");
+  printf("S for beef steak\n");
+  printf("U for fruit\n");
+  printf("I for ice cream\n");
 
   // enable keyboard
   wb_keyboard_enable(time_step);
