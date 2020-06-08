@@ -15,7 +15,7 @@
  */
 
 /*
- * Description: . 
+ * Description: .
  */
 
 #include <math.h>
