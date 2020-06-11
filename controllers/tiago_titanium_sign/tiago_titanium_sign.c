@@ -15,7 +15,7 @@
  */
 
 /*
- * Description: .
+ * Description: A project that brings Italian sign language to tiago relative to a restaurant menu.
  */
 
 #include <math.h>
@@ -444,7 +444,10 @@ int main(int argc, char **argv) {
   setTiagoPositionCompos(names, time_step, 0.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
 
   // print user instructions
+  printf("WELCOME TO TIAGO TITANIUM SIGN a project by Federico Dale' and Cristian Castiglione.\n");
   printf("WELCOME FOLKS\n"); //POI LO SISTEMEREMO
+  printf("TO ASK FOR ATTENTION PRESS: Q\n");
+  printf("\n");
   printf("TO SHOW THE LIS PRESS\n");
   printf("\n");
   printf("W for still water\n");
