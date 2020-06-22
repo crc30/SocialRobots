@@ -1,5 +1,5 @@
 # Documentation Controller Tiago Titanium
-Visit https://github.com/crc30/SocialRobots/blob/master/Relazione%20SR%20-%20Tiago%20Titanium%20Sign%20-%20Dal%C3%A9%20Castiglione.pdf for a complete relation of this project.
+Visit https://github.com/crc30/SocialRobots/blob/master/Relazione%20SR%20-%20Tiago%20Titanium%20Sign%20-%20Dal%C3%A9%20Castiglione.pdf for a complete report of this project.
 
 ## Installation
 
