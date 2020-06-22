@@ -1,7 +1,7 @@
-# Documentazione Controller Tiago Titanium
+# Documentation Controller Tiago Titanium
 Visit http://www.prova.it for a complete relation of this project.
 
-## Installazione
+## Installation
 
 
 1. Download webots
@@ -10,11 +10,11 @@ Visit http://www.prova.it for a complete relation of this project.
 4. Click File > Open Scenario
 5. Select .wbt in /worlds/tiago_world_dale_castiglione.wbt
 
-### Come aggiungere un segno
+### How to add a sign
 
 
-Il codice suddivide ogni parte del corpo in piccoli array di diverse dimensioni.
-Se i valori del movimento che vorresti far eseguire non sono presenti nella lista degli array presenti nel codice puoi aggiungerli creando degli array specifici per ogni parte del corpo nel seguente modo:
+The code divides each part of the body into small arrays of different sizes.
+If the values of the movement you would like to perform are not present in the list of arrays in the code, you can add them by creating specific arrays for each part of the body in the following way:
 
 * double my_head_torso[3] = {0.00, 0.00, 0.00};
 * double my_arm[4] = {0.00, 0.00, 0.00, 0.00};
@@ -26,17 +26,18 @@ Se i valori del movimento che vorresti far eseguire non sono presenti nella list
 * double my_little[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
 * double my_wheel[2] = {0.00, 0.00};
 
-Successivamente puoi creare la funzione per far eseguire il tuo segno.
-La tua funzione personalizzata chiamerà la funzione principale
+Then you can create the function to perform your sign.
+Your custom function will call the main function
+
 **static void setTiagoPositionCompos( char \*my_names[], int time_step, double interval, double \*arm, double \*palm, double \*thumb, double \*index, double \*middle, double \*ring, double \*little );**
 
-* \*my_names[] contiene i nomi di tutti i motori presenti nel robot (non serve modificarla, è già mappata)
-* double interval è il valore che indica l'intervallo di tempo che deve intercorrere tra l'inizio del gesto e il momento in cui il robot deve assumere quella specifica posizione.
-* le altre variabili sono array di valori dichiarati precedentemente.
+* \*my_names[] contains the names of all the motors present in the robot (no need to modify it, it is already mapped)
+* double interval is the value that indicates the time interval that must elapse between the beginning of the gesture and the moment in which the robot must assume that specific position.
+* the other variables are arrays of previously declared values.
 
-Supponiamo che tu voglia creare una funzione che permette al robot di eseguire il segno della birra:
+Suppose you want to create a function that allows the robot to perform the beer sign:
 
-Dopo aver dichiarato gli array, come specificato sopra, bisogna creare una funzione nel modo seguente:
+After declaring the arrays, as specified above, you need to create a function as follows:
 
 **static void beer(char *names[], int time_step) {\
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTiagoPositionCompos(names, time_step, 0.00, my_arm, my_hand, my_thumb, my_index, my_middle, my_ring, my_little);\
@@ -44,30 +45,31 @@ Dopo aver dichiarato gli array, come specificato sopra, bisogna creare una funzi
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTiagoPositionCompos(names, time_step, 2.00, my_arm_2, my_hand_2, my_thumb_2, my_index_2, my_middle_2, my_ring_2, my_little_2);\
 }**
 
-Come possiamo vedere dal codice appena descritto la nostra funzione **beer** richiama la **setTiagoPositionCompos** con i valori degli array precedentemente dichiarati e il valore time (**0.00, 4.00, 2.00**) indicano che quei il motore del robot deve mantenere la posizione per quella durata prima di eseguire l'altra funzione. L'array **\*my_names[]** non deve essere mai modificato in quanto è già inizializzato con tutti i nomi dei motori del robot, il nostro compito è semplicemente associare i valori per ogni motore attraverso gli array **my_arm, my_hand**, etc..
-L'intero **int time_step** che richiamiamo in ogni funzione è inizializzato nel **main** e ritorna  returns the value of the basicTimeStep field of the WorldInfo node. The basicTimeStep field defines the duration of the simulation step executed by Webots.
+As we can see from the code just described, our ** beer ** function calls the ** setTiagoPositionCompos ** with the values of the previously declared arrays and a time value (**0.00, 4.00, 2.00**). The time indicator establishes a delay in the execution of the movement towards the indicated gesture from the moment the function is called. The **\*my_names[]** array is the default array for initializing any function that has to do with the robot motors.
+To impose a motion on the robot from the position in which it is to the desired one, the function must be set using the arrays **my_arm, my_hand**, etc ..
+The integer ** int time_step ** that we call in each function is initialized in the ** main ** and returns the value of the basicTimeStep field of the WorldInfo node. The basicTimeStep field defines the duration of the simulation step executed by Webots.
 
-L'esecuzione delle funzioni è gestita tramite rilevamento input da tastiera e intercettato tramite uno switch case nel main.
+The execution of the functions is managed through keyboard input detection and intercepted through a switch case in the main.
 
-# Documentazione
+# Documentation
 
 Function setTiagoPositionCompos
 ======================
 
-La setTiagoPositionCompos è la funzione principale del nostro codice.
-Prende in input l'array my_names[] che contiene i nomi dei motori disponibili nel robot, l'intero time_step returns the value of the basicTimeStep field of the WorldInfo node, l'intero interval che indica dopo quanto tempo il robot deve assumere quella posizione e il resto degli array che prende in input sono i valori che il robot deve assumere per ogni suo motore, gli unici motori che noi non controlliamo, per il semplice fatto che nel nostro progetto non vengono usati, sono le ruote, la testa e il movimento del busto, per questo motivo questi valori non sono passati alla funzione.
+The setTiagoPositionCompos is the main function of our code.
+It takes as input the my_names[] array which contains the names of the motors available in the robot, the entire time_step (that returns the value of the basicTimeStep field of the WorldInfo node), the interval which indicates how long the robot must assume that position and the rest of the arrays it takes as input are the values that the robot must assume for each of its motors, the only motors that we do not control, for the simple fact that in our project they are not used, they are the wheels, the head and the engine dedicated to the movement of the bust, for this reason these values are not passed to the function.
 
 Function main
 ====
 
-Nella funzione main vengono dichiarate l'array dei motori disponibili del robot, la funzione nativa di webots per abilitare il rilevamento input da tastiera, il time step del robot, si inizializza il robot tramite la funzione wb_robot_init(), infine viene eseguito un ciclo while, che rimane attivo per tutta la durata del progetto, in cui è presente un controllo switch case che si occupa di chiamare la funzione relativa all'input inserito dall'utente
+In the main function are declared the array of available robot motors, a function that takes care of detecting keyboard input and time_step. Then the robot is initialized using the wb_robot_init() function, finally a while cycle is performed, which remains active for the duration of the simulation, in which there is a switch case control that takes care of calling the function relating to the input from the user.
 
 Function rotate
 ======
 
-Questa funzione è di supporto alla setTiagoPositionCompos e si occupa di far ruotare una determinata parte del robot per un certo intervallo di tempo. Questi due valori vengono presi in input dalla funzione e ciò ne consente il riutilizzo.
+This function supports the setTiagoPositionCompos and takes care of rotating a certain part of the robot for a certain period of time. These two values are taken as input by the function and this allows their reuse.
 
 Function rotate_and_move
 ===============
 
-Questa funzione è di supporto alla setTiagoPositionCompos e si occupa di far ruotare una parte del coropo del robot e muovere contemporaneamente un'altra per un certo intervallo di tempo e può essere integrata in qualsiasi altra funzione. (Utile nel caso in cui debba ruotare il polso mentre muovo la spalla.)
+This function supports the setTiagoPositionCompos and takes care of rotating a part of the robot's body and moving another one simultaneously for a certain period of time and can be integrated into any other function. (Useful in case you need to rotate your wrist while moving your shoulder.)
