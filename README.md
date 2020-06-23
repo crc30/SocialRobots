@@ -1,4 +1,4 @@
-# Installation and documentation Controller Tiago Titanium
+# Installation and documentation Tiago Titanium Sign
 Visit
 [here](https://github.com/crc30/SocialRobots/blob/master/Report%20SR%20-%20Tiago%20Titanium%20Sign%20-%20Dal%C3%A9%20Castiglione.pdf)
  for a complete report of this project.
