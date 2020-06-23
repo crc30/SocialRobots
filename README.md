@@ -1,10 +1,9 @@
-# Documentation Controller Tiago Titanium
+# Installation and documentation Controller Tiago Titanium
 Visit
 [here](https://github.com/crc30/SocialRobots/blob/master/Report%20SR%20-%20Tiago%20Titanium%20Sign%20-%20Dal%C3%A9%20Castiglione.pdf)
  for a complete report of this project.
 
 ## Installation
-
 
 1. Download webots
 2. Download project from github
@@ -18,31 +17,23 @@ Visit
 The code divides each part of the body into small arrays of different sizes.
 If the values of the movement you would like to perform are not present in the list of arrays in the code, you can add them by creating specific arrays for each part of the body in the following way:
 
-* ```c
+```c
 double my_head_torso[3] = {0.00, 0.00, 0.00};
-```
-* ```c
+
 double my_arm[4] = {0.00, 0.00, 0.00, 0.00};
-```
-* ```c
+
 double my_hand[3] = {0.00, 0.00, 0.00};
-```
-* ```c
+
 double my_thumb[5] = {0.00, 0.00, 0.00, 0.00, 0.00};
-```
-* ```c
+
 double my_index[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
-```
-* ```c
+
 double my_middle[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
-```
-* ```c
+
 double my_ring[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
-```
-* ```c
+
 double my_little[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
-```
-* ```c
+
 double my_wheel[2] = {0.00, 0.00};
 ```
 
@@ -77,23 +68,19 @@ The execution of the functions is managed through keyboard input detection and i
 
 # Documentation
 
-Function setTiagoPositionCompos
-======================
+## Function setTiagoPositionCompos
 
 The setTiagoPositionCompos is the main function of our code.
 It takes as input the my_names[] array which contains the names of the motors available in the robot, the entire time_step (that returns the value of the basicTimeStep field of the WorldInfo node), the interval which indicates how long the robot must assume that position and the rest of the arrays it takes as input are the values that the robot must assume for each of its motors, the only motors that we do not control, for the simple fact that in our project they are not used, they are the wheels, the head and the engine dedicated to the movement of the bust, for this reason these values are not passed to the function.
 
-Function main
-====
+## Function main
 
 In the main function are declared the array of available robot motors, a function that takes care of detecting keyboard input and time_step. Then the robot is initialized using the wb_robot_init() function, finally a while cycle is performed, which remains active for the duration of the simulation, in which there is a switch case control that takes care of calling the function relating to the input from the user.
 
-Function rotate
-======
+## Function rotate
 
 This function supports the setTiagoPositionCompos and takes care of rotating a certain part of the robot for a certain period of time. These two values are taken as input by the function and this allows their reuse.
 
-Function rotate_and_move
-===============
+## Function rotate_and_move
 
 This function supports the setTiagoPositionCompos and takes care of rotating a part of the robot's body and moving another one simultaneously for a certain period of time and can be integrated into any other function. (Useful in case you need to rotate your wrist while moving your shoulder.)
