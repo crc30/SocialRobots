@@ -1,5 +1,7 @@
 # Documentation Controller Tiago Titanium
-Visit https://github.com/crc30/SocialRobots/blob/master/Report%20SR%20-%20Tiago%20Titanium%20Sign%20-%20Dal%C3%A9%20Castiglione.pdf for a complete report of this project.
+Visit
+[here](https://github.com/crc30/SocialRobots/blob/master/Report%20SR%20-%20Tiago%20Titanium%20Sign%20-%20Dal%C3%A9%20Castiglione.pdf)
+ for a complete report of this project.
 
 ## Installation
 
@@ -16,20 +18,40 @@ Visit https://github.com/crc30/SocialRobots/blob/master/Report%20SR%20-%20Tiago%
 The code divides each part of the body into small arrays of different sizes.
 If the values of the movement you would like to perform are not present in the list of arrays in the code, you can add them by creating specific arrays for each part of the body in the following way:
 
-* double my_head_torso[3] = {0.00, 0.00, 0.00};
-* double my_arm[4] = {0.00, 0.00, 0.00, 0.00};
-* double my_hand[3] = {0.00, 0.00, 0.00};
-* double my_thumb[5] = {0.00, 0.00, 0.00, 0.00, 0.00};
-* double my_index[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
-* double my_middle[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
-* double my_ring[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
-* double my_little[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
-* double my_wheel[2] = {0.00, 0.00};
+* ```c
+double my_head_torso[3] = {0.00, 0.00, 0.00};
+```
+* ```c
+double my_arm[4] = {0.00, 0.00, 0.00, 0.00};
+```
+* ```c
+double my_hand[3] = {0.00, 0.00, 0.00};
+```
+* ```c
+double my_thumb[5] = {0.00, 0.00, 0.00, 0.00, 0.00};
+```
+* ```c
+double my_index[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
+```
+* ```c
+double my_middle[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
+```
+* ```c
+double my_ring[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
+```
+* ```c
+double my_little[7] = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
+```
+* ```c
+double my_wheel[2] = {0.00, 0.00};
+```
 
 Then you can create the function to perform your sign.
 Your custom function will call the main function
 
-**static void setTiagoPositionCompos( char \*my_names[], int time_step, double interval, double \*arm, double \*palm, double \*thumb, double \*index, double \*middle, double \*ring, double \*little );**
+```c
+static void setTiagoPositionCompos( char *my_names[], int time_step, double interval, double *arm, double *palm, double *thumb, double *index, double *middle, double *ring, double *little );
+```
 
 * \*my_names[] contains the names of all the motors present in the robot (no need to modify it, it is already mapped)
 * double interval is the value that indicates the time interval that must elapse between the beginning of the gesture and the moment in which the robot must assume that specific position.
@@ -39,11 +61,13 @@ Suppose you want to create a function that allows the robot to perform the beer 
 
 After declaring the arrays, as specified above, you need to create a function as follows:
 
-**static void beer(char *names[], int time_step) {\
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTiagoPositionCompos(names, time_step, 0.00, my_arm, my_hand, my_thumb, my_index, my_middle, my_ring, my_little);\
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTiagoPositionCompos(names, time_step, 4.00, my_arm_1, my_hand_1, my_thumb_1, my_index_1, my_middle_1, my_ring_1, my_little_1);\
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTiagoPositionCompos(names, time_step, 2.00, my_arm_2, my_hand_2, my_thumb_2, my_index_2, my_middle_2, my_ring_2, my_little_2);\
-}**
+```c
+static void beer(char *names[], int time_step) {
+    setTiagoPositionCompos(names, time_step, 0.00, my_arm, my_hand, my_thumb, my_index, my_middle, my_ring, my_little);
+    setTiagoPositionCompos(names, time_step, 4.00, my_arm_1, my_hand_1, my_thumb_1, my_index_1, my_middle_1, my_ring_1, my_little_1);
+    setTiagoPositionCompos(names, time_step, 2.00, my_arm_2, my_hand_2, my_thumb_2, my_index_2, my_middle_2, my_ring_2, my_little_2);
+}
+```
 
 As we can see from the code just described, our **beer** function calls the **setTiagoPositionCompos** with the values of the previously declared arrays and a time value (**0.00, 4.00, 2.00**). The time indicator establishes a delay in the execution of the movement towards the indicated gesture from the moment the function is called. The **\*my_names[]** array is the default array for initializing any function that has to do with the robot motors.
 To impose a motion on the robot from the position in which it is to the desired one, the function must be set using the arrays **my_arm, my_hand**, etc ..
