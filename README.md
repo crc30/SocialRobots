@@ -45,7 +45,7 @@ After declaring the arrays, as specified above, you need to create a function as
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTiagoPositionCompos(names, time_step, 2.00, my_arm_2, my_hand_2, my_thumb_2, my_index_2, my_middle_2, my_ring_2, my_little_2);\
 }**
 
-As we can see from the code just described, our ** beer ** function calls the ** setTiagoPositionCompos ** with the values of the previously declared arrays and a time value (**0.00, 4.00, 2.00**). The time indicator establishes a delay in the execution of the movement towards the indicated gesture from the moment the function is called. The **\*my_names[]** array is the default array for initializing any function that has to do with the robot motors.
+As we can see from the code just described, our **beer** function calls the **setTiagoPositionCompos** with the values of the previously declared arrays and a time value (**0.00, 4.00, 2.00**). The time indicator establishes a delay in the execution of the movement towards the indicated gesture from the moment the function is called. The **\*my_names[]** array is the default array for initializing any function that has to do with the robot motors.
 To impose a motion on the robot from the position in which it is to the desired one, the function must be set using the arrays **my_arm, my_hand**, etc ..
 The integer ** int time_step ** that we call in each function is initialized in the ** main ** and returns the value of the basicTimeStep field of the WorldInfo node. The basicTimeStep field defines the duration of the simulation step executed by Webots.
 
