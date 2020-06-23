@@ -84,7 +84,3 @@ This function supports the setTiagoPositionCompos and takes care of rotating a c
 ## Function rotate_and_move
 
 This function supports the setTiagoPositionCompos and takes care of rotating a part of the robot's body and moving another one simultaneously for a certain period of time and can be integrated into any other function. (Useful in case you need to rotate your wrist while moving your shoulder.)
-
-# Primary Authors
-@crc30 \
-@fededale95
