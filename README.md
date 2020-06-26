@@ -5,11 +5,13 @@ Visit
 
 ## Installation
 
-1. [Download](https://cyberbotics.com/#download) webots
-2. [Download](https://github.com/crc30/SocialRobots.git) project from github
-3. Open webots
-4. Click File > Open Scenario
-5. Select file .wbt in /worlds/tiago_world_dale_castiglione.wbt
+1. [Download](https://cyberbotics.com/#download) webots.
+2. [Download](https://github.com/crc30/SocialRobots.git) project from github.
+3. Open webots.
+4. Click File > Open Scenario.
+5. Select file .wbt in /worlds/tiago_world_dale_castiglione.wbt.
+6. Compile /controllers/tiago_titanium_sign.c.
+7. Start the simulation and follow the istruction on console.
 
 ### How to add a sign
 
