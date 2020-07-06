@@ -25,11 +25,16 @@
 #include <webots/keyboard.h>
 #include <webots/motor.h>
 #include <webots/robot.h>
+ #include <string.h>
+//#include </Users/crist/OneDrive/Desktop/jsmn-master/jsmn.h>
+#include <\Users\crist\OneDrive\Desktop\jsmn-master\jsmn.h>
 
 #define MAX_SPEED 7.0  // [rad/s]
 #define N_PARTS 45
 #define MOTOR_LEFT N_PARTS - 2
 #define MOTOR_RIGHT N_PARTS - 1
+
+
 
 static WbDeviceTag robot_parts[N_PARTS];
 
@@ -133,7 +138,7 @@ static WbDeviceTag robot_parts[N_PARTS];
 static void setTiagoPositionCompos(char *my_names[], int time_step, double interval, double *arm, double *palm, double *thumb, double *index, double *middle, double *ring, double *little){  //SETTING DELLA POSIZIONE COMPOSIZIONALE
 
   double my_target_pos[N_PARTS];
-
+ 
   for (int i = 0; i < 3; i++) {
     my_target_pos[i]=0.00;
   }
@@ -263,7 +268,7 @@ static void cocacola(char *names[], int time_step){
 
 static void coffee(char *names[], int time_step){
     setTiagoPositionCompos(names, time_step, 0.00, arm_90_45_2, palm_up2, thumb_centred, index_centred, middle_open, ring_open, little_open);
-    rotate(time_step, 7, 3.00, 0.60);
+    rotate(time_step, 9, 3.00, 0.60);
     setTiagoPositionCompos(names, time_step, 0.50, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
 }
 
@@ -376,7 +381,81 @@ void cotoletta(char *names[], int time_step) {
 
 }
 
+
+//Cri
+static int jsoneq(const char *json, jsmntok_t *tok, const char *s) {
+  if (tok->type == JSMN_STRING && (int)strlen(s) == tok->end - tok->start && strncmp(json + tok->start, s, tok->end - tok->start) == 0) {
+    return 0;
+  }
+  return -1;
+}
+//EndCri 
+
 int main(int argc, char **argv) {
+    jsmn_parser parser;
+
+    jsmn_init(&parser);
+
+int n;
+char *JSON_STRING;
+jsmntok_t t[256]; 
+
+//read file
+char var[10000];
+    FILE *file;
+    file = fopen("/Users/crist/OneDrive/Desktop/test.json","r");
+    while(fgets(var, sizeof(var), file)!=NULL)
+    printf("Data read=%s\n",var);
+    fclose(file);
+//-- 
+
+JSON_STRING = var;
+
+n = jsmn_parse(&parser, JSON_STRING, strlen(JSON_STRING), t, sizeof(t) / sizeof(t[0]));
+
+/* Loop over all keys of the root object */
+for (int i = 1; i < n; i++) {
+  if (jsoneq(JSON_STRING, &t[i], "location") == 0) {
+      
+      printf("- location: %.*s\n", t[i + 1].end - t[i + 1].start,
+             JSON_STRING + t[i + 1].start);
+      i++;
+    } else if (jsoneq(JSON_STRING, &t[i], "hand_configuration") == 0) {
+      
+      printf("- hand_configuration: %.*s\n", t[i + 1].end - t[i + 1].start,
+             JSON_STRING + t[i + 1].start);
+      i++;
+    } else if (jsoneq(JSON_STRING, &t[i], "hand_orientation") == 0) {
+     
+      printf("- hand_orientation: %.*s\n", t[i + 1].end - t[i + 1].start,
+             JSON_STRING + t[i + 1].start);
+      i++;
+    }else if (jsoneq(JSON_STRING, &t[i], "movement_speed") == 0) {
+      
+      printf("- movement_speed: %.*s\n", t[i + 1].end - t[i + 1].start,
+             JSON_STRING + t[i + 1].start);
+      i++;
+    } else if (jsoneq(JSON_STRING, &t[i], "movement") == 0) {
+      int j;
+      printf("- movement:\n");
+      if (t[i + 1].type != JSMN_ARRAY) {
+        continue; /* We expect groups to be an array of strings */
+      }
+      for (j = 0; j < t[i + 1].size; j++) {
+        jsmntok_t *g = &t[i + j + 2];
+        printf("  * %.*s\n", g->end - g->start, JSON_STRING + g->start);
+      }
+      i += t[i + 1].size + 1;
+    } /*else {
+      printf("Unexpected key: %.*s\n", t[i].end - t[i].start,
+             JSON_STRING + t[i].start);
+    }*/
+}
+ 
+
+
+
+
   wb_robot_init();
   const int time_step = wb_robot_get_basic_time_step();  //TIME STEP DELLA SIMULAZIONE
   char *names[N_PARTS] = {"head_2_joint",
