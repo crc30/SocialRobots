@@ -1,0 +1,75 @@
+{
+  "beer": [
+    {
+      "change_position_after": "0.00",
+      "arm_location": "arm_90_up",
+      "palm_orientation": "palm_sx",
+      "thumb_configuration": "thumb_closed",
+      "index_configuration": "index_closed",
+      "middle_configuration": "middle_closed",
+      "ring_configuration": "ring_closed",
+      "little_configuration": "little_closed"
+    },
+    {
+      "rotate": "no",
+      "part": "",
+      "duration": "",
+      "coeff": ""
+    },
+    {
+      "rotate_and_move": "no",
+      "move_value": "",
+      "dir": "",
+      "duration": "",
+      "coeff": ""
+    },
+    {
+      "change_position_after": 4.00,
+      "arm_location": "arm_90_down",
+      "palm_orientation": "palm_sx",
+      "thumb_configuration": "thumb_closed",
+      "index_configuration": "index_closed",
+      "middle_configuration": "middle_closed",
+      "ring_configuration": "ring_closed",
+      "little_configuration": "little_closed"
+    }
+  ]
+},
+{
+  "altro": [
+    {
+      "arm_location": "arm_90_up",
+      "palm_orientation": "palm_sx",
+      "thumb_configuration": "thumb_closed",
+      "index_configuration": "index_closed",
+      "middle_configuration": "middle_closed",
+      "ring_configuration": "ring_closed",
+      "little_configuration": "little_closed",
+      "change_position_after": 1.00
+    },
+    {
+      "rotate": "no",
+      "part": "",
+      "duration": "",
+      "coeff": ""
+    },
+    {
+      "rotate_and_move": "no",
+      "move_value": "",
+      "dir": "",
+      "duration": "",
+      "coeff": ""
+    },
+    {
+      "arm_location": "arm_90_down",
+      "palm_orientation": "palm_sx",
+      "thumb_configuration": "thumb_closed",
+      "index_configuration": "index_closed",
+      "middle_configuration": "middle_closed",
+      "ring_configuration": "ring_closed",
+      "little_configuration": "little_closed",
+      "change_position_after": 42.00
+    }
+  ]
+
+}
