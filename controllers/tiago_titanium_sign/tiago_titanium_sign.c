@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0 
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -391,31 +391,112 @@ static int jsoneq(const char *json, jsmntok_t *tok, const char *s) {
 }
 //EndCri 
 
-int main(int argc, char **argv) {
-    jsmn_parser parser;
+void newSet(char *names[], int time_step) {
+     jsmn_parser parser;
 
     jsmn_init(&parser);
 
 int n;
 char *JSON_STRING;
 jsmntok_t t[256]; 
-
 //read file
 char var[10000];
-    FILE *file;
-    file = fopen("/Users/crist/OneDrive/Desktop/test.json","r");
-    while(fgets(var, sizeof(var), file)!=NULL)
-    printf("Data read=%s\n",var);
-    fclose(file);
+char jsonFile[100000];
+FILE *file;
+file = fopen("/Users/crist/OneDrive/Desktop/test.json","r");
+while(fgets(var, sizeof(var), file)!=NULL) {
+  var[strcspn(var, "\n")] = '\0'; //remove newline
+  //var[strcspn(var, "")] = '\0';
+  strcat(jsonFile, var);
+}
+printf("Data read=%s\n",jsonFile);
+fclose(file);
 //-- 
 
-JSON_STRING = var;
+JSON_STRING = jsonFile;
 
 n = jsmn_parse(&parser, JSON_STRING, strlen(JSON_STRING), t, sizeof(t) / sizeof(t[0]));
 
+
+//***
+char change_position_after[100];
+char arm_location[100],palm_orientation[100],thumb_configuration[100],index_configuration[100],middle_configuration[100],ring_configuration[100],little_configuration[100];
+int Rchange_position_after;
+//double Rarm_location,Rpalm_orientation,Rthumb_configuration,Rindex_configuration,Rmiddle_configuration,Rring_configuration,Rlittle_configuration;
+//***
+//***
 /* Loop over all keys of the root object */
+      /*char buf[100];
+      sprintf(buf, "%.*s", t[i + 1].end - t[i + 1].start, JSON_STRING + t[i + 1].start);
+      if (strcmp(buf, "beer") == 0)
+        printf("-->%s\n", buf);
+      i++;*/
+      int entry = 0;
 for (int i = 1; i < n; i++) {
-  if (jsoneq(JSON_STRING, &t[i], "location") == 0) {
+
+if (jsoneq(JSON_STRING, &t[i], "beer") == 0 && entry == 0) {
+      entry=1;
+      //printf("iiiiii %d\n",i);
+      for (int j = 1; i < n; i++) {  
+        if (jsoneq(JSON_STRING, &t[j], "change_position_after") == 0) { 
+          sprintf(change_position_after, "%.*s", t[j + 1].end - t[j + 1].start, JSON_STRING + t[j + 1].start);
+          Rchange_position_after = atof(change_position_after);
+          printf("change_position_after: %d\n", Rchange_position_after);
+        }
+        if (jsoneq(JSON_STRING, &t[j], "arm_location") == 0) { 
+          sprintf(arm_location, "%.*s", t[j + 1].end - t[j + 1].start, JSON_STRING + t[j + 1].start);
+          //Rarm_location = atof(arm_location);
+          printf("arm_location: %s\n", arm_location);
+        }
+         if (jsoneq(JSON_STRING, &t[i], "palm_orientation") == 0) { 
+          sprintf(palm_orientation, "%.*s", t[i + 1].end - t[i + 1].start, JSON_STRING + t[i + 1].start);
+          //Rpalm_orientation = atof(palm_orientation);
+          printf("palm_orientation: %s\n", palm_orientation);
+        }
+        if (jsoneq(JSON_STRING, &t[i], "thumb_configuration") == 0) { 
+          sprintf(thumb_configuration, "%.*s", t[i + 1].end - t[i + 1].start, JSON_STRING + t[i + 1].start);
+          //Rthumb_configuration = atof(thumb_configuration);
+          printf("thumb_configuration: %s\n", thumb_configuration);
+        }
+        if (jsoneq(JSON_STRING, &t[i], "index_configuration") == 0) { 
+          sprintf(index_configuration, "%.*s", t[i + 1].end - t[i + 1].start, JSON_STRING + t[i + 1].start);
+          //Rindex_configuration = atof(index_configuration);
+          printf("index_configuration: %s\n", index_configuration);
+        }
+        if (jsoneq(JSON_STRING, &t[i], "middle_configuration") == 0) { 
+          sprintf(middle_configuration, "%.*s", t[i + 1].end - t[i + 1].start, JSON_STRING + t[i + 1].start);
+          //Rmiddle_configuration = atof(middle_configuration);
+          printf("middle_configuration: %s\n", middle_configuration);
+        }
+        if (jsoneq(JSON_STRING, &t[i], "ring_configuration") == 0) { 
+          sprintf(ring_configuration, "%.*s", t[i + 1].end - t[i + 1].start, JSON_STRING + t[i + 1].start);
+          //Rring_configuration = atof(ring_configuration);
+          printf("ring_configuration: %s\n", ring_configuration);
+        }
+        if (jsoneq(JSON_STRING, &t[i], "little_configuration") == 0) { 
+          sprintf(little_configuration, "%.*s", t[i + 1].end - t[i + 1].start, JSON_STRING + t[i + 1].start);
+          //Rlittle_configuration = atof(little_configuration);
+          printf("little_configuration: %s\n", little_configuration);
+        } 
+        j++;
+        }
+        //setTiagoPositionCompos(names, time_step, change_position_after, arm_location, palm_orientation, thumb_configuration, index_configuration, middle_configuration, ring_configuration, little_configuration);
+        //setTiagoPositionCompos(names, time_step, 2.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
+   i++; }
+   }
+   
+   //Set setTiagoPositionCompos()
+   
+  
+   
+  }
+
+int main(int argc, char **argv) {
+
+    
+
+//----------------------------------------------------------//
+  /*if (jsoneq(JSON_STRING, &t[i], "location") == 0) {
       
       printf("- location: %.*s\n", t[i + 1].end - t[i + 1].start,
              JSON_STRING + t[i + 1].start);
@@ -439,19 +520,21 @@ for (int i = 1; i < n; i++) {
       int j;
       printf("- movement:\n");
       if (t[i + 1].type != JSMN_ARRAY) {
-        continue; /* We expect groups to be an array of strings */
+        continue; // We expect groups to be an array of strings
       }
       for (j = 0; j < t[i + 1].size; j++) {
         jsmntok_t *g = &t[i + j + 2];
         printf("  * %.*s\n", g->end - g->start, JSON_STRING + g->start);
       }
       i += t[i + 1].size + 1;
-    } /*else {
+    }*/ /*else {
       printf("Unexpected key: %.*s\n", t[i].end - t[i].start,
              JSON_STRING + t[i].start);
     }*/
-}
- 
+//----------------------------------------------------------//
+//}
+
+
 
 
 
@@ -521,7 +604,7 @@ for (int i = 1; i < n; i++) {
 
   //POSIZIONE INIZIALE
   setTiagoPositionCompos(names, time_step, 0.00, arm_target, palm_rear, thumb_closed, index_closed, middle_closed, ring_closed, little_closed);
-
+  
   // print user instructions
   printf("WELCOME TO TIAGO TITANIUM SIGN a project by Federico Dale' and Cristian Castiglione.\n");
   printf("WELCOME FOLKS\n"); //POI LO SISTEMEREMO
@@ -598,6 +681,9 @@ for (int i = 1; i < n; i++) {
             break;
           case 'Q':
               start_comunication(names, time_step);
+            break;
+            case 'Z':
+              newSet(names, time_step);
             break;
         }
       }
